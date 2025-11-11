@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Apartamento</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Apartamento</h1>
+        
+        <form th:action="@{/cad-apto}" th:object="${apartamento}" method="post">
+            <div>
+                <label>Número da Porta:</label>
+                <input type="number" th:field="*{numeroPorta}" required>
+            </div>
+            <div>
+                <label>Quantidade de Quartos:</label>
+                <input type="number" th:field="*{quantidadeQuartos}" required>
+            </div>
+            <div>
+                <label>Tipo de Ocupação:</label>
+                <select th:field="*{tipoOcupacao}" required>
+                    <option value="">Selecione...</option>
+                    <option value="Proprietário">Proprietário</option>
+                    <option value="Inquilino">Inquilino</option>
+                    <option value="Vazio">Vazio</option>
+                </select>
+            </div>
+            <div>
+                <label>Proprietário:</label>
+                <select th:field="*{proprietario}" required>
+                    <option value="">Selecione um proprietário</option>
+                    <option th:each="proprietario : ${proprietarios}"
+                            th:value="${proprietario.id}"
+                            th:text="${proprietario.nome}">
+                    </option>
+                </select>
+            </div>
+            <button type="submit">Salvar</button>
+        </form>
+        
+        <div class="navigation">
+            <a th:href="@{/cad-prop}">Cadastrar Proprietário</a>
+            <a th:href="@{/rel-apto}">Ver Relatório de Apartamentos</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ArthurApplication<arthur>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "avaliacao.arthur.ArthurApplication",
+            "projectName": "arthur",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
